@@ -14,20 +14,29 @@
     <script type="text/javascript">
         
         // 1. Alert messages: Create an alert() message that includes a simple greeting and displays your full name.
-        
 
-        
-
+        alert("Hello! My name is Alexandra Hart.");
 
         // 2. Variables: Create three variables called "a", "b", and "c" that store three different data types. For example, their values could be a String, number, boolean, etc. Afterwards, print the variables' values via console.log().   
         
+        let a = "a string";
+        let b = 12;
+        let c = true;
+
+        console.log("a = " + a + ", b = " + b + ", c = " + c);
 
 
 
 
         // 3. Functions: Create a function called "add" that takes 2 parameters, "num1" and "num2", and returns their sum. Afterwards, test the function by calling the function and passing two arguments. Log the results using console.log(). For example, add(5, 2) should return 7.
         
+        function add(num1, num2)
+        {
+            sum = num1 + num2;
+            return sum;
+        };
 
+        console.log(add(7, 14));
 
 
 
@@ -37,7 +46,13 @@
 
         // For loop logic goes here...
 
+        for (let i = 0; i < originalArray.length; i++)
+        {
+            newArray[newArray.length] = originalArray[i] * 2;
+            console.log(newArray);
+        }
 
+        console.log(newArray);
 
 
 
@@ -52,7 +67,24 @@
             - Hint: use % (modulo operator) to calculate the remainder after dividing a number by another.
         */
         
-
+        //for (let i = 0; i <= 100; i++);
+        let i = 1
+        while(i <= 100)
+        {
+            if (i % 3 === 0){
+                console.log("Fizz");
+            }
+            if (i % 5 === 0){
+                console.log("Buzz");
+            }
+            if (i % 3 === 0 && i % 5 === 0){
+                console.log("FizzBuzz");
+            }
+            else{
+                console.log(i);
+            }
+            i++;
+        }
 
 
 
@@ -64,6 +96,19 @@
                 - Finally, create a string variable "str1" that retrieves all the properties of "obj_1" and concatenate them into a full sentence. Print the string variable using console.log(). For example, your output text may look like: "Jacob Smith, age 57, is currently at East Greenwich, and is feeling happy."
         */ 
         
+        let obj_1 = {
+            firstName: "Alex",
+            lastName: "Hart",
+            age: 19,
+            isHappy: true,
+            location: "RI"
+        }
+
+        console.log(obj_1);
+
+        let str_1 = obj_1.firstName + " " + obj_1.lastName + " is " + obj_1.age + " years old, living in " + obj_1.location + " and feeling happy."
+
+        console.log(str_1);
 
 
 
@@ -77,8 +122,18 @@
         let usaSeniorCitizenAgeReq = 65;  // Standard age threshold to be considered a U.S. senior citizen.
         
         // For...of loop logic goes here...
-        
 
+        for (let i = 0; i >= arrayOfPeople.length; i++)
+        {
+            if (arrayOfPeople[i].age >= usaSeniorCitizenAgeReq){
+                arrayOfPeople[i].isSeniorCitizen = true
+            }
+            else{
+                arrayOfPeople[i].isSeniorCitizen = false
+            }
+        }
+
+        console.log(arrayOfPeople)
 
         
     </script>    
