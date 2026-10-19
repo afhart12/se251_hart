@@ -108,7 +108,7 @@ function main()
     }
 
     //ball collision with right side
-    if (ball.x > 800)
+    if (ball.x > c.width)
     {
         ball.x = c.width/2
         ball.y = c.height/2
