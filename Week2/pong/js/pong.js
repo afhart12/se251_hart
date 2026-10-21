@@ -44,6 +44,8 @@ ball.vx = -2
 ball.vy = -2
 ball.color = `black`
 
+let scoreDivs = Array.from(document.querySelectorAll(`div`));
+
 
 function main()
 {
@@ -153,4 +155,12 @@ function main()
     pads[0].draw()
     pads[1].draw()
     ball.draw()
+
+    // Show scores
+    for (let i = 0; i < scoreDivs.length; i++)
+    {
+        scoreDivs[0].textContent = ("Player 1: " + players[0].score)
+        scoreDivs[1].textContent = ("Player 2: " + players[1].score)
+    }
+
 }
