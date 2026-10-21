@@ -70,6 +70,7 @@ function main()
         {
             ball.x = c.width/2;
             ball.y = c.height/2;
+            ball.vy = -ball.vy
         }
 
     // p1 collision
