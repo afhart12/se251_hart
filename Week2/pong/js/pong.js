@@ -88,6 +88,8 @@ function main()
             ball.x = c.width/2;
             ball.y = c.height/2;
             ball.vy = -ball.vy
+            players[0].score += 1
+            console.log(players[0].score, " | ", players[1].score)
         }
 
     // p1 collision
@@ -116,6 +118,8 @@ function main()
     {
         ball.x = c.width/2
         ball.y = c.height/2
+        players[1].score += 1
+        console.log(players[0].score, " | ", players[1].score)
     }
     
     if (ball.y < 0)
