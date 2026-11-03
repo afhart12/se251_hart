@@ -7,6 +7,7 @@ let timer = setInterval(main, 1000/60)
 
 // Global friction variable
 let fy = .97
+
 // players config
 const players = new Array();
 
@@ -51,9 +52,67 @@ function main()
 {
     // Erases the canvas
     ctx.clearRect(0,0,c.width,c.height)
+
+    // for loop to handle movement
+    for (let i = 0; i < players.length; i++) {
+        const upKey = i === 0 ? "w" : "ArrowUp";
+        const downKey = i === 0 ? "s" : "ArrowDown";
+
+        if (keys[upKey]) pads[i].vy += -pads[i].force;
+        if (keys[downKey]) pads[i].vy += pads[i].force;
+
+        pads[i].vy *= fy;
+        pads[i].move(upKey, downKey, keys, fy, c.height);
+
+        if (pads[i].y < pads[i].h/2) {
+            pads[i].y = pads[i].h/2;
+        }
+        if (pads[i].y > c.height - pads[i].h/2) {
+            pads[i].y = c.height - pads[i].h/2;
+        }
+        // collision
+
+        if (pads[i].y < 0+pads[i].h/2)
+        {
+            pads[i].y = 0+pads[i].h/2
+        }
+
+        if (pads[i].y > c.height-pads[i].h/2)
+        {
+            pads[i].y = c.height-pads[i].h/2
+        }
+
+        if (pads[i].y < 0+pads[i].h/2)
+        {
+            pads[i].y = 0+pads[i].h/2
+        }
+
+        if (pads[i].y > c.height-pads[i].h/2)
+        {
+            pads[i].y = c.height-pads[i].h/2
+        }
+
+        //ball collision
+        if (ball.collide(pads[0]))
+        {
+            ball.x = pads[0].x + pads[0].w/2 + ball.w/2
+            ball.vx = -ball.vx;
+        }
+
+        if (ball.collide(pads[1]))
+        {
+            ball.x = pads[1].x - pads[1].w/2 - ball.w/2
+            ball.vx = -ball.vx;
+        }
+
+        pads[i].draw();
+    }
+
+
     
+    // week 3 loop will replace this: 
     // p1 accelerates when key is pressed 
-    if(keys[`w`])
+    /* if(keys[`w`])
     {
        pads[0].vy += -pads[0].force
     }
@@ -78,8 +137,30 @@ function main()
     {
         pads[1].vy += pads[1].force
     }
-
+        
     pads[1].move();
+//collision
+    if (pads[0].y < 0+pads[0].h/2)
+        {
+            pads[0].y = 0+pads[0].h/2
+        }
+
+        if (pads[0].y > c.height-pads[0].h/2)
+        {
+            pads[0].y = c.height-pads[0].h/2
+        }
+
+        // p2 collision
+        if (pads[1].y < 0+pads[1].h/2)
+        {
+            pads[1].y = 0+pads[1].h/2
+        }
+        if (pads[1].y > c.height-pads[1].h/2)
+        {
+            pads[1].y = c.height-pads[1].h/2
+        }
+*/
+    
 
     // Ball movement
     ball.move()
@@ -94,26 +175,7 @@ function main()
             console.log(players[0].score, " | ", players[1].score)
         }
 
-    // p1 collision
-    if (pads[0].y < 0+pads[0].h/2)
-    {
-        pads[0].y = 0+pads[0].h/2
-    }
-
-    if (pads[0].y > c.height-pads[0].h/2)
-    {
-        pads[0].y = c.height-pads[0].h/2
-    }
-
-    // p2 collision
-    if (pads[1].y < 0+pads[1].h/2)
-    {
-        pads[1].y = 0+pads[1].h/2
-    }
-    if (pads[1].y > c.height-pads[1].h/2)
-    {
-        pads[1].y = c.height-pads[1].h/2
-    }
+    
     // Ball collision 
     
     if (ball.x < 0)
@@ -135,8 +197,7 @@ function main()
         ball.vy = -ball.vy       
     }
 
-    
-
+/* also replaced by the for loop above
     // p1 with ball collision
     if (ball.collide(pads[0]))
     {
@@ -150,10 +211,10 @@ function main()
         ball.x = pads[1].x - pads[1].w/2 - ball.w/2
         ball.vx = -ball.vx;
     }
+        */
 
     // Draw the objects
-    pads[0].draw()
-    pads[1].draw()
+
     ball.draw()
 
     // Show scores
