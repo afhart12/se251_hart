@@ -20,6 +20,23 @@ options.addEventListener("click", function (e)
 
 -----------*/
 
+let fillColor = document.querySelectorAll(".fill");
+let outputs = document.querySelectorAll(".output");
+
+for (let i = 0; i < fillColor.length; i++) {
+    
+    fillColor[i].addEventListener("input", function () {
+        player[i].fill = this.value;
+        pad[i].fill = this.value;
+        outputs[i].textContent = this.value;
+    });
+}
+
+for (i = 0; i < fillColor.length; i++)
+{
+    player[i].fill = fillColor[i];
+}
+
 /*---------
     Program the six key inputs to do the following:
     . Display the correct key names for each player   
